@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taqueria Nuevo Leon – Authentic Mexican Food</title>
+    <meta name="description" content="Experience the best authentic Mexican food at Taqueria Nuevo Leon. Fresh ingredients, traditional recipes, and a welcoming atmosphere.">
+    
+    <!-- Open Graph / SEO -->
+    <meta property="og:title" content="Taqueria Nuevo Leon – Authentic Mexican Food">
+    <meta property="og:description" content="Savor authentic Mexican dishes made with fresh ingredients and rich culinary tradition.">
+    <meta property="og:image" content="https://res.cloudinary.com/dzklt0a5u/image/upload/v1777151404/yiebnrm6l10wizbcdbp2.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" id="favicon" type="image/png" href="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto:eco,dpr_auto,w_250/v1788975554/TaqueriaNuevoLeonLOGO_nxp96h.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ----------------------------------------------------
+           Design System & CSS Variables
+           ---------------------------------------------------- */
+        :root {
+            --color-forest: #0F5934;
+            --color-emerald: #1C944B;
+            --color-mustard: #E5A93D;
+            --color-mustard-hover: #c99333;
+            --color-cream: #FDFBF7;
+            --color-wood-base: #DEAB65;
+            
+            --color-text-main: #333333;
+            --color-text-light: #4A4A4A;
+            --color-white: #ffffff;
+            
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Montserrat', Arial, sans-serif;
+            
+            --card-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+            --border-radius: 6px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-text-main);
+            background-color: var(--color-wood-base);
+            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background-color: var(--color-forest);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-mustard);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--color-white);
+            letter-spacing: 1.5px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--color-mustard);
+            transition: var(--transition);
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-link:hover { color: var(--color-mustard); }
+
+        .navbar-toggler {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+        .toggler-icon {
+            width: 30px; height: 2px;
+            background-color: var(--color-mustard);
+            transition: var(--transition);
+        }
+
+        .lang-switch {
+            display: flex; align-items: center; gap: 8px;
+            margin-left: 20px; padding-left: 20px;
+            border-left: 1px solid rgba(255,255,255,0.2);
+        }
+        .lang-btn {
+            cursor: pointer; font-size: 13px; font-weight: 700;
+            transition: var(--transition);
+        }
+        .lang-btn.active { color: var(--color-mustard); }
+        .lang-btn.inactive { color: rgba(255,255,255,0.5); font-weight: 500; }
+        .lang-btn:hover { color: var(--color-white); }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 90vh; min-height: 650px;
+            display: flex; align-items: center; justify-content: center;
+            background-color: var(--color-forest);
+            background-image: url('https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975632/751241808_27456124240737082_9204112830722668372_n_ifozrs.jpg');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            background-attachment: scroll; 
+            margin-top: 70px;
+        }
+
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(15, 89, 52, 0.6), rgba(0, 0, 0, 0.7));
+        }
+
+        .hero-content {
+            position: relative; z-index: 1;
+            text-align: center; color: var(--color-white);
+            padding: 40px; max-width: 900px;
+            background: rgba(253, 251, 247, 0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--border-radius);
+        }
+
+        .hero-logo-container { margin-bottom: 30px; }
+        .hero-logo { max-height: 140px; margin: 0 auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4)); }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: 64px; font-weight: 700; font-style: italic;
+            margin-bottom: 20px; color: var(--color-cream);
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero-address {
+            font-size: 18px; font-weight: 500; color: var(--color-mustard);
+            margin-top: 30px; letter-spacing: 0.5px;
+        }
+
+        /* Buttons */
+        .hero-buttons {
+            display: flex; gap: 20px; justify-content: center;
+            flex-wrap: wrap; margin-top: 30px;
+        }
+        
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 15px 35px; font-size: 14px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            border-radius: 4px; transition: var(--transition);
+            cursor: pointer; font-family: var(--font-sans);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--color-mustard);
+            color: var(--color-forest);
+            border: 2px solid var(--color-mustard);
+        }
+        .btn-primary:hover {
+            background-color: var(--color-mustard-hover);
+            border-color: var(--color-mustard-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(229, 169, 61, 0.4);
+        }
+
+        /* Content Cards */
+        .content-card {
+            background-color: var(--color-cream);
+            padding: 70px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            position: relative;
+            margin: 80px 0;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 42px; font-weight: 700;
+            color: var(--color-emerald);
+            margin-bottom: 10px;
+        }
+        .section-title.centered { text-align: center; }
+
+        .section-subtitle-container {
+            display: flex; align-items: center; gap: 15px; margin-bottom: 35px;
+        }
+        .section-subtitle-container.centered { justify-content: center; }
+
+        .line-small { width: 50px; height: 3px; background-color: var(--color-mustard); }
+        
+        .section-subtitle {
+            font-size: 14px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--color-mustard);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+        .about-text p {
+            color: var(--color-text-light); margin-bottom: 20px; font-size: 16px;
+        }
+        .about-images {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; position: relative;
+        }
+        .about-image {
+            width: 100%; height: 350px; object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: var(--transition);
+        }
+        .about-images img:nth-child(2) { transform: translateY(40px); }
+        .about-images img:hover { transform: scale(1.03) translateY(10px); z-index: 2; }
+
+        /* Gallery Section */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px; margin-top: 50px;
+        }
+        .gallery-img-wrapper {
+            position: relative; overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            aspect-ratio: 1/1;
+        }
+        .gallery-img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-img-wrapper:hover .gallery-img { transform: scale(1.1); }
+
+        /* Info Section */
+        .info-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px;
+        }
+        .info-item {
+            text-align: center; padding: 30px 20px;
+            background: var(--color-white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom: 4px solid var(--color-mustard);
+            transition: var(--transition);
+        }
+        .info-item:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .info-icon {
+            width: 40px; height: 40px; margin: 0 auto 20px; fill: var(--color-emerald);
+        }
+        .info-item h4 {
+            font-family: var(--font-serif); font-size: 22px; font-weight: 700;
+            color: var(--color-forest); margin-bottom: 15px;
+        }
+        .info-item p { color: var(--color-text-light); font-size: 15px; font-weight: 500; }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--color-forest);
+            padding: 80px 0 30px;
+            color: var(--color-cream);
+            border-top: 5px solid var(--color-mustard);
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px;
+        }
+        .footer-title {
+            font-family: var(--font-serif); font-size: 24px; font-weight: 700;
+            color: var(--color-mustard); margin-bottom: 25px;
+        }
+        .footer-col p { font-size: 15px; margin-bottom: 15px; opacity: 0.9; }
+        
+        .social-icons { display: flex; gap: 20px; margin-top: 25px; }
+        .social-link {
+            display: flex; align-items: center; justify-content: center;
+            width: 45px; height: 45px; border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--color-cream); transition: var(--transition);
+        }
+        .social-link:hover { background-color: var(--color-mustard); color: var(--color-forest); transform: translateY(-3px); }
+        
+        .footer-bottom {
+            text-align: center; margin-top: 60px; padding-top: 30px;
+            border-top: 1px solid rgba(253, 251, 247, 0.1);
+            font-size: 14px; font-weight: 500; letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .about-images { order: -1; margin-bottom: 30px; }
+            .about-images img:nth-child(2) { transform: translateY(0); }
+            .content-card { padding: 40px 20px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-toggler { display: flex; }
+            .nav-menu {
+                position: absolute; top: 100%; left: 0; right: 0;
+                flex-direction: column; background-color: var(--color-forest);
+                padding: 20px; gap: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                transform: translateY(-150%); opacity: 0; visibility: hidden;
+                transition: var(--transition); border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            .nav-menu.active { transform: translateY(0); opacity: 1; visibility: visible; }
+            .lang-switch { margin: 0; padding: 0; border: none; justify-content: center; width: 100%; }
+            .hero-title { font-size: 46px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .social-icons { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 36px; }
+            .section-title { font-size: 32px; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="navbar-brand" id="nav-brand">Taqueria Nuevo Leon</a>
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#hero-section" class="nav-link active" data-es="Inicio" data-en="Home">Home</a></li>
+                <li><a href="#about-section" class="nav-link" data-es="Nosotros" data-en="About Us">About Us</a></li>
+                <li><a href="#gallery-section" class="nav-link" data-es="Galería" data-en="Gallery">Gallery</a></li>
+                <li><a href="#info-section" class="nav-link" data-es="Contacto" data-en="Contact">Contact</a></li>
+                <li class="lang-switch">
+                    <span id="lang-es" class="lang-btn inactive" onclick="setLang('es')">ES</span>
+                    <span style="color: rgba(255,255,255,0.3);">|</span>
+                    <span id="lang-en" class="lang-btn active" onclick="setLang('en')">EN</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-logo-container">
+                <img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto:eco,dpr_auto,w_250/v1788975554/TaqueriaNuevoLeonLOGO_nxp96h.png" id="hero-logo" alt="Taqueria Nuevo Leon Logo" class="hero-logo" width="160" height="160">
+            </div>
+            <h1 class="hero-title" data-es="Auténtico Sabor Mexicano" data-en="Authentic Mexican Flavor">Authentic Mexican Flavor</h1>
+            
+            <div class="hero-buttons">
+                <a href="https://taqueriaelchavodelocho.online/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-es="Ordenar en Línea" data-en="Order Online">
+                    Order Online
+                </a>
+                
+                <div style="display:none;">
+                    <menutech-orders id="hero-orders" cuid="00000" ruid="0000" background="#E5A93D" color="#0F5934" data-glf-cuid="00000" data-glf-ruid="0000"></menutech-orders>
+                    <menutech-reservations id="hero-reservations" cuid="00000" ruid="0000" background="#1C944B" color="#ffffff" data-glf-cuid="00000" data-glf-ruid="0000" data-glf-reservation="true"></menutech-reservations>
+                </div>
+            </div>
+            <p class="hero-address" id="hero-address">Park Plaza Shopping Center, Cincinnati, OH 45245</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- About Us Section -->
+        <section class="content-card" id="about-section">
+            
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 class="section-title" id="about-title" data-es="Bienvenidos a Taqueria Nuevo Leon" data-en="Welcome to Taqueria Nuevo Leon">Welcome to Taqueria Nuevo Leon</h2>
+                    <span class="section-subtitle-container">
+                        <span class="line-small"></span>
+                        <span class="section-subtitle" id="about-subtitle" data-es="Nuestra Historia" data-en="About Us">About Us</span>
+                    </span>
+                    <p id="about-p1" data-es="En Taqueria Nuevo Leon, nos enorgullece llevar a nuestros invitados la vibrante y auténtica cocina mexicana, elaborada con cuidado y una rica tradición culinaria. Cada plato que servimos está lleno de sabores audaces y preparado para ofrecer una experiencia gastronómica memorable." data-en="At Taqueria Nuevo Leon, we take pride in bringing our guests vibrant and authentic Mexican cuisine, crafted with care and rich culinary tradition. Every dish we serve is full of bold flavors and prepared to deliver a memorable dining experience.">
+                        At Taqueria Nuevo Leon, we take pride in bringing our guests vibrant and authentic Mexican cuisine, crafted with care and rich culinary tradition. Every dish we serve is full of bold flavors and prepared to deliver a memorable dining experience.
+                    </p>
+                    <p id="about-p2" data-es="El secreto de nuestro éxito es simple: crear comidas excepcionales utilizando ingredientes frescos y de alta calidad que capturan la verdadera esencia de la cocina mexicana en cada bocado." data-en="The secret to our success is simple: creating exceptional meals using fresh, high-quality ingredients that capture the true essence of Mexican cooking in every bite.">
+                        The secret to our success is simple: creating exceptional meals using fresh, high-quality ingredients that capture the true essence of Mexican cooking in every bite.
+                    </p>
+                    <p id="about-p3" data-es="Nuestra misión es ayudarte a saborear los momentos que realmente importan. Disfruta de buena comida. Bebe una bebida refrescante. Y sobre todo, relájate y siéntete como en casa. Agradecemos sinceramente tu continuo apoyo y confianza." data-en="Our mission is to help you savor the moments that truly matter. Enjoy great food. Sip on a refreshing drink. And above all, unwind and feel at home. We sincerely appreciate your continued support and trust.">
+                        Our mission is to help you savor the moments that truly matter. Enjoy great food. Sip on a refreshing drink. And above all, unwind and feel at home. We sincerely appreciate your continued support and trust.
+                    </p>
+                </div>
+                <div class="about-images">
+                    <img id="about-img-1" src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_600/v1788975642/561301375_122094810807083422_5680022584099948645_n_aernao.jpg" alt="Mexican Food Dish 1" class="about-image" loading="lazy" width="400" height="350">
+                    <img id="about-img-2" src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_600/v1788975644/708136375_122133806847083422_8662068623682357291_n_h6dw9l.jpg" alt="Mexican Food Dish 2" class="about-image" loading="lazy" width="400" height="350">
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="content-card" id="gallery-section">
+            <h2 class="section-title centered" id="gallery-title" data-es="🪵 Nuestros Platillos 🪵" data-en="🪵 Delicious Mexican Food 🪵">Delicious Mexican Food</h2>
+            <span class="section-subtitle-container centered">
+                <span class="line-small"></span>
+                <span class="section-subtitle" id="gallery-subtitle" data-es="Amor al Primer Bocado" data-en="Love At First Bite">Love At First Bite</span>
+                <span class="line-small"></span>
+            </span>
+            
+            <div id="gallery-container" class="gallery-container">
+                <!-- Se cargan todos los elementos por defecto -->
+                <div class="gallery-img-wrapper"><img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_500,h_500,c_fill/v1788975709/758706854_1513630184142427_3733844222863929770_n_ubnb3r.jpg" class="gallery-img" loading="lazy" alt="Gallery Image"></div>
+                <div class="gallery-img-wrapper"><img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_500,h_500,c_fill/v1788975709/758518273_1754493809072237_3976237902049901215_n_fe957z.jpg" class="gallery-img" loading="lazy" alt="Gallery Image"></div>
+                <div class="gallery-img-wrapper"><img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_500,h_500,c_fill/v1788975711/753396793_122138295537083422_5053006432834541089_n_hf5agz.jpg" class="gallery-img" loading="lazy" alt="Gallery Image"></div>
+                <div class="gallery-img-wrapper"><img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_500,h_500,c_fill/v1788975711/752822801_122138295387083422_6362592142519587029_n_mu3xl9.jpg" class="gallery-img" loading="lazy" alt="Gallery Image"></div>
+                <div class="gallery-img-wrapper"><img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_500,h_500,c_fill/v1788975712/752489142_122138295525083422_1344320884003678117_n_wixgcp.jpg" class="gallery-img" loading="lazy" alt="Gallery Image"></div>
+                <div class="gallery-img-wrapper"><img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_500,h_500,c_fill/v1788975713/751871137_122138295303083422_2624302958236463298_n_mw69it.jpg" class="gallery-img" loading="lazy" alt="Gallery Image"></div>
+                
+                <!-- Extras agregados para llenar la galería -->
+                <div class="gallery-img-wrapper"><img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_500,h_500,c_fill/v1788975709/758706854_1513630184142427_3733844222863929770_n_ubnb3r.jpg" class="gallery-img" loading="lazy" alt="Gallery Image"></div>
+                <div class="gallery-img-wrapper"><img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_500,h_500,c_fill/v1788975709/758518273_1754493809072237_3976237902049901215_n_fe957z.jpg" class="gallery-img" loading="lazy" alt="Gallery Image"></div>
+                <div class="gallery-img-wrapper"><img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_500,h_500,c_fill/v1788975711/753396793_122138295537083422_5053006432834541089_n_hf5agz.jpg" class="gallery-img" loading="lazy" alt="Gallery Image"></div>
+                <div class="gallery-img-wrapper"><img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_500,h_500,c_fill/v1788975711/752822801_122138295387083422_6362592142519587029_n_mu3xl9.jpg" class="gallery-img" loading="lazy" alt="Gallery Image"></div>
+                <div class="gallery-img-wrapper"><img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_500,h_500,c_fill/v1788975712/752489142_122138295525083422_1344320884003678117_n_wixgcp.jpg" class="gallery-img" loading="lazy" alt="Gallery Image"></div>
+                <div class="gallery-img-wrapper"><img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_500,h_500,c_fill/v1788975713/751871137_122138295303083422_2624302958236463298_n_mw69it.jpg" class="gallery-img" loading="lazy" alt="Gallery Image"></div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="content-card" id="info-section">
+            <h2 class="section-title centered" id="info-title" data-es="Información" data-en="Information">Information</h2>
+            <span class="section-subtitle-container centered">
+                <span class="line-small"></span>
+                <span class="section-subtitle" id="info-subtitle" data-es="Visítanos" data-en="Visit Us">Visit Us</span>
+                <span class="line-small"></span>
+            </span>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <svg class="info-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    <h4 data-es="Horarios" data-en="Opening Hours">Opening Hours</h4>
+                    <p id="info-hours">Mon – Thu: 11:00 AM – 10:00 PM<br>Fri – Sat: 11:00 AM – 11:00 PM<br>Sun: 11:00 AM – 9:30 PM</p>
+                </div>
+                <div class="info-item">
+                    <svg class="info-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <h4 data-es="Teléfono" data-en="Phone">Phone</h4>
+                    <p id="info-phone">513-449-3057</p>
+                </div>
+                <div class="info-item">
+                    <svg class="info-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <h4 data-es="Dirección" data-en="Address">Address</h4>
+                    <p id="info-address">Park Plaza Shopping Center, Cincinnati, OH 45245</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="footer-title">Taqueria Nuevo Leon</h4>
+                    <p data-es="Descubre la verdadera esencia de la gastronomía mexicana. Ingredientes frescos, recetas familiares y pasión en cada taco." data-en="Discover the true essence of Mexican gastronomy. Fresh ingredients, family recipes, and passion in every taco.">
+                        Discover the true essence of Mexican gastronomy. Fresh ingredients, family recipes, and passion in every taco.
+                    </p>
+                    <div class="social-icons" id="social-icons">
+                        <a href="https://www.instagram.com/taquerianuevo.leon/" class="social-link" target="_blank" aria-label="Instagram">
+                            <svg style="width:20px;height:20px;fill:currentColor" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/p/Nuevo-Le%C3%B3n-61582502666842/" class="social-link" target="_blank" aria-label="Facebook">
+                            <svg style="width:20px;height:20px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@taqueria.nuevo.le6" class="social-link" target="_blank" aria-label="TikTok">
+                            <svg style="width:20px;height:20px;fill:currentColor" viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.78-1.15 5.54-3.33 7.31-1.92 1.56-4.6 2.01-6.94 1.2-2.56-.88-4.52-3.15-4.91-5.83-.4-2.73.53-5.61 2.64-7.39 2.04-1.72 4.96-2.18 7.42-1.35v4.13c-1.33-.5-2.9-.39-4.04.42-1.14.8-1.57 2.37-1.14 3.65.41 1.23 1.77 2.11 3.09 1.93 1.34-.18 2.4-1.28 2.59-2.61.07-.48.06-.97.06-1.45V.02z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title" data-es="Contacto" data-en="Contact Us">Contact Us</h4>
+                    <p id="footer-address">Park Plaza Shopping Center, Cincinnati, OH 45245</p>
+                    <p id="footer-phone" data-es="Teléfono: 513-449-3057" data-en="Phone: 513-449-3057">Phone: 513-449-3057</p>
+                    <a href="https://taqueriaelchavodelocho.online/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="margin-top: 15px; padding: 10px 20px; font-size: 12px;" data-es="Ordenar Ahora" data-en="Order Now">Order Now</a>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title" data-es="Horarios" data-en="Opening Hours">Opening Hours</h4>
+                    <p id="footer-hours">Mon – Thu: 11:00 AM – 10:00 PM<br>Fri – Sat: 11:00 AM – 11:00 PM<br>Sun: 11:00 AM – 9:30 PM</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom" id="dynamic-footer-year"></div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://www.fbgcdn.com/embedder/js/ewm2.js"></script>
+    <script src="https://menutech.xyz/menutechUI.min.js"></script>
+
+    <script>
+        const currentYear = new Date().getFullYear();
+        document.getElementById('dynamic-footer-year').innerHTML = `© 2015-${currentYear} Powered by <a href="https://menutech.xyz" target="_blank" style="color: var(--color-mustard); font-weight: 700; transition: color 0.3s;">Menutech</a>. All Rights Reserved.`;
+
+        let currentLang = 'en';
+
+        function setLang(lang) {
+            currentLang = lang;
+            
+            const esBtn = document.getElementById('lang-es');
+            const enBtn = document.getElementById('lang-en');
+            
+            if (lang === 'es') {
+                esBtn.classList.add('active'); esBtn.classList.remove('inactive');
+                enBtn.classList.remove('active'); enBtn.classList.add('inactive');
+            } else {
+                enBtn.classList.add('active'); enBtn.classList.remove('inactive');
+                esBtn.classList.remove('active'); esBtn.classList.add('inactive');
+            }
+
+            document.querySelectorAll(`[data-${lang}]`).forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = el.getAttribute(`data-${lang}`);
+                } else {
+                    el.innerHTML = el.getAttribute(`data-${lang}`);
+                }
+            });
+        }
+
+        const navbarToggler = document.getElementById('navbar-toggler');
+        const navMenu = document.getElementById('nav-menu');
+        const navbar = document.querySelector('.navbar');
+
+        navbarToggler.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icons = navbarToggler.querySelectorAll('.toggler-icon');
+            if (navMenu.classList.contains('active')) {
+                icons[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+                icons[1].style.opacity = '0';
+                icons[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+            } else {
+                icons.forEach(icon => {
+                    icon.style.transform = 'none';
+                    icon.style.opacity = '1';
+                });
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.padding = '10px 0';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
+            } else {
+                navbar.style.padding = '15px 0';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
+            }
+        });
+
+        window.MENU_TECH_STATE = {
+            "lang":"en", "showReservations":false, "showAbout":true, "showPromo":false, "showGallery":true, "showCatering":false, "showInfo":true, "showDelivery":false,
+            "cuid":"00000", "ruid":"0000", "title":"Taqueria Nuevo Leon",
+            "logoImg":"https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975554/TaqueriaNuevoLeonLOGO_nxp96h.png",
+            "heroAddress":"Park Plaza Shopping Center, Cincinnati, OH 45245",
+            "gallery":[
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975709/758706854_1513630184142427_3733844222863929770_n_ubnb3r.jpg",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975709/758518273_1754493809072237_3976237902049901215_n_fe957z.jpg",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975711/753396793_122138295537083422_5053006432834541089_n_hf5agz.jpg",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975711/752822801_122138295387083422_6362592142519587029_n_mu3xl9.jpg",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975712/752489142_122138295525083422_1344320884003678117_n_wixgcp.jpg",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975713/751871137_122138295303083422_2624302958236463298_n_mw69it.jpg",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975709/758706854_1513630184142427_3733844222863929770_n_ubnb3r.jpg",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975709/758518273_1754493809072237_3976237902049901215_n_fe957z.jpg",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975711/753396793_122138295537083422_5053006432834541089_n_hf5agz.jpg",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975711/752822801_122138295387083422_6362592142519587029_n_mu3xl9.jpg",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975712/752489142_122138295525083422_1344320884003678117_n_wixgcp.jpg",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788975713/751871137_122138295303083422_2624302958236463298_n_mw69it.jpg"
+            ]
+        };
+
+        const optimizeCloudinaryUrl = (url, options = {}) => {
+            if (!url || typeof url !== 'string' || !url.includes('res.cloudinary.com')) return url;
+            const [baseUrl, hash] = url.split('#');
+            if (!baseUrl.includes('/upload/')) return url;
+            const parts = baseUrl.split('/upload/');
+            let pathSegments = parts[1].split('/');
+            if (pathSegments.length > 1) {
+                const firstSegment = pathSegments[0];
+                const isVersion = /^v\d+$/.test(firstSegment);
+                const isTransformation = !isVersion && (firstSegment.includes('_') || firstSegment.includes(','));
+                if (isTransformation) pathSegments.shift();
+            }
+            const cleanPath = pathSegments.join('/');
+            let transformations = ['f_auto', 'q_auto:eco', 'dpr_auto'];
+            if (options.width) transformations.push(`w_${options.width}`); else transformations.push('w_400');
+            if (options.height) transformations.push(`h_${options.height}`);
+            if (options.crop) transformations.push(`c_${options.crop}`);
+            const transformationString = transformations.join(',');
+            const optimizedUrl = `${parts[0]}/upload/${transformationString}/${cleanPath}`;
+            return hash ? `${optimizedUrl}#${hash}` : optimizedUrl;
+        };
+
+        function updateUI(data) {
+            if (!data) return;
+            if (data.gallery) {
+                const container = document.getElementById('gallery-container');
+                if (container) {
+                    container.innerHTML = data.gallery.map(img => `
+                        <div class="gallery-img-wrapper">
+                            <img src="${optimizeCloudinaryUrl(img, { width: 500, height: 500, crop: 'fill' })}" class="gallery-img" loading="lazy" alt="Gallery Image">
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+
+        window.addEventListener('message', (event) => {
+            if (event.data.type === 'UPDATE_CONTENT') {
+                updateUI(event.data.data);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.MENU_TECH_STATE) {
+                updateUI(window.MENU_TECH_STATE);
+            }
+            setTimeout(() => { if(window.glfBindButtons) window.glfBindButtons(); }, 1000);
+        });
+    </script>
+</body>
+</html>
